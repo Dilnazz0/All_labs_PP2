@@ -1,4 +1,4 @@
 import re
 s=input("enter:")
-result=re.sub(r"([A-Z][a-z]+)",r" \1 ",s).strip()
+result=re.sub(r"([A-Z])",r"_\1",s).lower()
 print(result)
