@@ -15,14 +15,14 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_UP and headr.top > 0:
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP and headr.top > 0:
                         headr.y -= 20
-        elif event.key == pygame.K_DOWN and headr.bottom < 600:
+            elif event.key == pygame.K_DOWN and headr.bottom < 600:
                         headr.y += 20
-        elif event.key == pygame.K_LEFT and headr.left > 0:
+            elif event.key == pygame.K_LEFT and headr.left > 0:
                         headr.x -= 20
-        elif event.key == pygame.K_RIGHT and headr.right < 800:
+            elif event.key == pygame.K_RIGHT and headr.right < 800:
                         headr.x += 20
 
     
