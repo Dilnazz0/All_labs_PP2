@@ -85,22 +85,31 @@ while running:
             x1, y1 = startpos
             x2, y2 = endpos
 
+            
+        if event.type == pygame.MOUSEBUTTONUP:
+            drawing = False
+            endpos = event.pos
+
             if currenttool == 'Rectangle':
-                rect = pygame.Rect(startpos,(x2-x1, y2-y1))
+                rect = pygame.Rect(startpos,(endpos[0]-startpos[0], endpos[1]-startpos[1]))
                 pygame.draw.rect(screen, color, rect, 2)
             elif currenttool == 'Circle':
-                radiuscircle = int(math.hypot(x2-x1, y2-y1))
+                radiuscircle = int(((endpos[0]-startpos[0])**2 + (endpos[1]-startpos[1])**2)**0.5)
                 pygame.draw.circle(screen, color, startpos, radiuscircle, 2)
+
             elif currenttool == 'Square':
                 size = max(abs(x2-x1), abs(y2-y1))
                 rect = pygame.Rect(x1, y1, size, size)
                 pygame.draw.rect(screen, color, rect, 2)
+
             elif currenttool == 'RightTriangle':
                 pygame.draw.polygon(screen, color, [startpos, (x2,y1), endpos], 2)
+
             elif currenttool == 'EquilateralTriangle':
                 base = x2 - x1
                 height = int(base * math.sqrt(3)/2)
                 pygame.draw.polygon(screen, color, [startpos, (x1+base, y1), (x1+base//2, y1-height)], 2)
+                
             elif currenttool == 'Rhombus':
                 dx = x2 - x1
                 dy = y2 - y1
